@@ -1,0 +1,20 @@
+{
+    "name": "vinelab/url-shortener",
+    "description": "",
+    "authors": [
+        {
+            "name": "Mahmoud Zalt",
+            "email": "inbox@mahmoudzalt.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "5.0.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Vinelab\\UrlShortener": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
