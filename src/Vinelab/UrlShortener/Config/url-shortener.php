@@ -24,7 +24,7 @@ return [
 
         'bitly' => [
 
-            'token' => '5b049304ecb6d7be952caa8655f212d75c8cad92',
+            'token' => 'YOUR-TOKEN-HERE',
 
         ],
 
