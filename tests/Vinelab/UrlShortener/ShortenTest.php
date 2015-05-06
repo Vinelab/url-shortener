@@ -3,17 +3,17 @@ namespace Vinelab\UrlShortener\Tests;
 
 use Mockery as M;
 use Vinelab\UrlShortener\ConfigManager;
-use Vinelab\UrlShortener\Url;
-use Vinelab\UrlShortener\Tests\TestCase;
+use Vinelab\UrlShortener\Shorten;
 
 /**
- * Class UrlTest
+ * Class ShortenTest
  *
  * @category Test Class
- * @package Vinelab\UrlShortener\Tests
- * @author  Mahmoud Zalt <mahmoud@vinelab.com>
+ * @package  Vinelab\UrlShortener\Tests
+ * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
-class UrlTest extends TestCase {
+class ShortenTest extends TestCase
+{
 
     public function setUp()
     {
@@ -34,11 +34,11 @@ class UrlTest extends TestCase {
 //        TODO: mock this tests (prevent sending real request to the API)
 
         $config = new ConfigManager();
-        $url_manager = new Url($config);
+        $shortener = new Shorten($config);
 
         $url = 'http://testing.com/v4/content/something/12345/something-else/54321?featured=1&published=1';
 
-        $shorted_url = $url_manager->shorten($url);
+        $shorted_url = $shortener->url($url);
 
         $this->assertEquals($shorted_url, 'http://bit.ly/1zIv6l7');
     }
