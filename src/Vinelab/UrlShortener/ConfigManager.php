@@ -29,7 +29,9 @@ class ConfigManager extends Repository
      */
     public function __construct()
     {
-        $this->loadConfigurationFiles($this->configurationPath());
+        $path = $this->configurationPath();
+
+        $this->loadConfigurationFiles($path);
     }
 
     /**
@@ -67,12 +69,34 @@ class ConfigManager extends Repository
         return $this->read('drivers' . '.' . $name);
     }
 
+
     /**
      * Initialize the paths.
+     * check if this package is used inside of laravel project,
+     * if it is laravel project then try to load the config file
+     * from the laravel config directory.
+     * if the file was not found (not published) ten load the config
+     * file form the package directory.
+     *
+     * @return string
      */
     private function configurationPath()
     {
-        return __DIR__ . '/config'; // the config file is on this directory
+        // the config file of the package directory
+        $config_path = __DIR__ . '/config';
+
+        // check if this laravel specific function `config_path()` exist (means this package is used inside
+        // a laravel framework). If so then load then try to load the laravel config file if it exist.
+        if (function_exists('config_path')) {
+            $config_file = config_path() . '/' . self::CONFIG_FILE_NAME . '.php';
+
+            if (file_exists($config_file)) {
+                // override the path by the laravel specific config directory 
+                $config_path = config_path();
+            }
+        }
+
+        return $config_path;
     }
 
     /**
