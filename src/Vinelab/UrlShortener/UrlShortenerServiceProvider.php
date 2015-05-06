@@ -21,35 +21,18 @@ class UrlShortenerServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     *
+     * Boot the package.
      */
     public function boot()
     {
-//        switch($this->detectLaravelVersion()){
-//            case 4:
-//                $this->package('vinelab/url-shortener');
-//                break;
-//            case 5:
-        // When users execute Laravel's vendor:publish command, the config file will be copied to the specified location
-        $this->publishes([
-            __DIR__ . 'Config/url-shortener.php' => config_path('url-shortener.php'),
-        ]);
-//                break;
-//        }
+        /*
+        |--------------------------------------------------------------------------
+        | Publish the Config file from the Package to the App directory
+        |--------------------------------------------------------------------------
+        */
+        $this->configPublisher();
     }
 
-    /**
-     * detect and return the laravel version
-     *
-     * @return int
-     */
-    private function detectLaravelVersion()
-    {
-        $app = $this->app;
-        $version = intval($app::VERSION);
-
-        return $version;
-    }
 
     /**
      * Register the service provider.
@@ -91,19 +74,31 @@ class UrlShortenerServiceProvider extends ServiceProvider
     }
 
     /**
+     * Publish the Config file from the Package to the App directory
+     */
+    private function configPublisher()
+    {
+        // When users execute Laravel's vendor:publish command, the config file will be copied to the specified location
+        $this->publishes([
+            __DIR__ . '/Config/url-shortener.php' => config_path('url-shortener.php'),
+        ]);
+    }
+
+    /**
      * Facades Binding
      */
     private function facadeBindings()
     {
-        // Register 'vinelab.url' instance container to our CdnFacade object
-        $this->app['vinelab.url'] = $this->app->share(function () {
-            return $this->app->make('Vinelab\UrlShortener\Url');
+
+        // Register 'vinelab.shorten' instance container
+        $this->app['vinelab.shorten'] = $this->app->share(function ($app) {
+            return $app->make('Vinelab\UrlShortener\Shorten');
         });
 
-        // Register 'Url' Alias, So users don't have to add the Alias to the 'app/config/app.php'
+        // Register 'Shorten' Alias, So users don't have to add the Alias to the 'app/config/app.php'
         $this->app->booting(function () {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-            $loader->alias('Url', 'Vinelab\UrlShortener\Facades\UrlFacadeAccessor');
+            $loader->alias('Shorten', 'Vinelab\UrlShortener\Facades\ShortenFacadeAccessor');
         });
     }
 
@@ -113,8 +108,8 @@ class UrlShortenerServiceProvider extends ServiceProvider
     private function implementationBindings()
     {
         $this->app->bind(
-            'Vinelab\UrlShortener\Contracts\UrlInterface',
-            'Vinelab\UrlShortener\Url'
+            'Vinelab\UrlShortener\Contracts\ShortenInterface',
+            'Vinelab\UrlShortener\Shorten'
         );
     }
 
