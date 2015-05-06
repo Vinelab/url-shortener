@@ -1,7 +1,7 @@
 <?php
 namespace Vinelab\UrlShortener;
 
-use Vinelab\UrlShortener\Contracts\UrlInterface;
+use Vinelab\UrlShortener\Contracts\ShortenInterface;
 use Vinelab\UrlShortener\Drivers\DriversFactory;
 
 /**
@@ -12,7 +12,7 @@ use Vinelab\UrlShortener\Drivers\DriversFactory;
  * @package  Vinelab\UrlShortener
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
-class Url implements UrlInterface
+class Shorten implements ShortenInterface
 {
 
     /**
@@ -55,7 +55,7 @@ class Url implements UrlInterface
      *
      * @param $url
      */
-    public function shorten($url)
+    public function url($url)
     {
         return $this->driver->shorten($url);
     }
