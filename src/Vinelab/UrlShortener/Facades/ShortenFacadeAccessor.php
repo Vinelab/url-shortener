@@ -4,13 +4,13 @@ namespace Vinelab\UrlShortener\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class UrlFacadeAccessor the Facade Accessor of the Url Facade
+ * Class ShortenFacadeAccessor the Facade Accessor of the Shorten Facade
  *
  * @category Facade
  * @package  Vinelab\UrlShortener\Facades
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
-class UrlFacadeAccessor extends Facade
+class ShortenFacadeAccessor extends Facade
 {
 
     /**
@@ -20,6 +20,6 @@ class UrlFacadeAccessor extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'vinelab.url';
+        return 'vinelab.shorten';
     }
 }
