@@ -80,15 +80,8 @@ And to do so:
 The easiest way is to use it is by the `Shorten` facade.
 ```php
 $long_url = 'http://testing.tst/something/12345/something-else/54321';
-$short_url = Shorten::url($long_url);
+$short_url = Shorten/Shorten::url($long_url); // returns the short version of the long_url as a string 
 ```
-Note: if you have a custom namespace in your client class make sure you are using the `Shorten` class on the top of your class.
-```php 
-	use Shorten; 
-```
-
-
-
 
 
 ## Contribution
