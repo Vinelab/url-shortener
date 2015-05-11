@@ -2,9 +2,9 @@
 
 Shorten your URL the easy way, with your favourite provider (Bit.ly, Goo.gl, Ow.ly).
 
-*The URL Shorteneing Providers are online services that takes long URLs and squeezes them into fewer characters to make the link easier to share, tweet, or send by email.*
+*The URL Shortening Providers are online services that takes long URLs and squeezes them into fewer characters to make the link easier to share, tweet, or send by email.*
 
-`vinelab/url-shortener` is a PHP Package that consumes `URL Shorteneing Prioviders` API's.
+`vinelab/url-shortener` is a PHP Package that consumes `URL Shortening Providers` API's.
 
 The supported providers of this release:
 * Bit.ly
@@ -42,11 +42,11 @@ If you are using this package inside a Laravel project then you need to:
 		'Vinelab\UrlShortener\UrlShortenerServiceProvider'
     ),
 ```
-The service provider will automatically alias the `Vinelab\UrlShortener\Shorten` class, so you can easely use the `Shorten` facade anywhere in your app.
+The service provider will automatically alias the `Vinelab\UrlShortener\Shorten` class, so you can easily use the `Shorten` facade anywhere in your app.
 
 2. Publish the configuration file:
 ```dos 
-	php artisan vendor:publish vinelab/url-shortener
+php artisan vendor:publish --provider ='Vinelab\UrlShortener\UrlShortenerServiceProvider'
 ```
 
 Go to the generated config file `url-shortener.php` and select your default provider:
@@ -62,6 +62,15 @@ Then add your provider token:
 
         ],
 ```
+
+Note: It's very recommended to not add your token (any sensetive data) to the config file instead reference it to a `.env` variable. 
+
+And to do so:
+
+1. replace the `'token' => 'YOUR-TOKEN-HERE',` with `'token' => env('BITLY_TOKEN'),`
+2. open your `.env` file and add the token variable there with the token value: `BITLY_TOKEN=YOUR-TOKEN-HERE`. 
+3. add the variable `BITLY_TOKEN=` to the `.env.example` for other developers.
+
 
  
 ## Usage
@@ -88,14 +97,13 @@ Note: if you have a custom namespace in your client class make sure you are usin
 
 Supporting a new URL shortening provider is very easy.
 
-1. all you have to is to write a driver for your URL Shoretener service.
+1. all you have to is to write a driver for your URL Shortener service.
 check the `Bitly` driver `Vinelab\UrlShortener\Drivers\Bitly` implementation to get an overview.
 2. add you driver configuration to the config file.
 3. write tests for your drvier.
-4. check out the  [Contribuition Guide](https://github.com/Vinelab/url-shortener/blob/master/CONTRIBUTING.md) for general details.
+4. check out the  [Contribution Guide](https://github.com/Vinelab/url-shortener/blob/master/CONTRIBUTING.md) for general details.
 
 
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/Vinelab/url-shortener/blob/master/LICENSE) for more information.
-
