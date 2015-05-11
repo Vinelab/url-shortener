@@ -4,7 +4,7 @@ Shorten your URL the easy way, with your favourite provider (Bit.ly, Goo.gl, Ow.
 
 *The URL Shorteneing Providers are online services that takes long URLs and squeezes them into fewer characters to make the link easier to share, tweet, or send by email.*
 
-`vinelab/url-shortener` is a PHP Package that consumes `URL Shorteneing Prioviders' API's.
+`vinelab/url-shortener` is a PHP Package that consumes `URL Shorteneing Prioviders` API's.
 
 The supported providers of this release:
 * Bit.ly
@@ -87,6 +87,7 @@ Note: if you have a custom namespace in your client class make sure you are usin
 ### Support new provider
 
 Supporting a new URL shortening provider is very easy.
+
 1. all you have to is to write a driver for your URL Shoretener service.
 check the `Bitly` driver `Vinelab\UrlShortener\Drivers\Bitly` implementation to get an overview.
 2. add you driver configuration to the config file.
