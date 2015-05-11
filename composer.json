@@ -2,7 +2,7 @@
     "name": "vinelab/url-shortener",
     "description": "Shorten your URL the easy way.",
     "license": "MIT",
-    "keywords": ["Shorten", "URL", "bitly"],
+    "keywords": ["Shorten", "URL", "bitly", "Laravel", "URL Shortener", "PHP"],
     "authors": [
         {
             "name": "Mahmoud Zalt",
