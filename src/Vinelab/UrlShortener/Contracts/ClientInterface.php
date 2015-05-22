@@ -7,5 +7,5 @@ namespace Vinelab\UrlShortener\Contracts;
  */
 interface ClientInterface
 {
-    public function call($url, $parameters = [], $json_formatted = true, $verb = 'get');
+    public function fetchUrl($url, $parameters = [], $json_formatted = true, $verb = 'get');
 }

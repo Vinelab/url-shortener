@@ -39,11 +39,11 @@ class Client implements ClientInterface
      *
      * @return mixed
      */
-    public function call($url, $parameters = [], $json_formatted = true, $verb = 'get')
+    public function fetchUrl($url, $parameters = [], $json_formatted = true, $verb = 'get')
     {
-        $uri = $this->generateUri($url, $parameters);
+        $full_url = $this->buildUrl($url, $parameters);
 
-        $response = $this->client->{$verb}($uri);
+        $response = $this->client->{$verb}($full_url);
 
         return ($json_formatted) ? $response->json() : $response;
     }
@@ -56,7 +56,7 @@ class Client implements ClientInterface
      *
      * @return string
      */
-    private function generateUri($url, $parameters)
+    private function buildUrl($url, $parameters)
     {
         $prams_former = '?';
 

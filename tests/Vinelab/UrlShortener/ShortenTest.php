@@ -33,6 +33,19 @@ class ShortenTest extends TestCase
     {
 //        TODO: mock this tests (prevent sending real request to the API)
 
+//{
+//            +"status_code": 200
+//        +"status_txt": "OK"
+//        +"data": {#288
+//            +"long_url": "http://testing.com/v4/content/something/12345/something-else/54321?featured=1&published=1"
+//            +"url": "http://bit.ly/1zIv6l7"
+//            +"hash": "1zIv6l7"
+//            +"global_hash": "1zIv6l8"
+//            +"new_hash": 0
+//  }
+//}
+
+
         $config = new ConfigManager();
         $shortener = new Shorten($config);
 

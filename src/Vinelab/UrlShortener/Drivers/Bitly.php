@@ -71,11 +71,8 @@ class Bitly extends Client implements DriverInterface
      */
     public function shorten($url)
     {
-        $api_url = $this->buildShortenUrl();
-        $parameters = $this->buildRequestParameters($url);
-
         // make the API call through the extended client
-        $response = $this->call($api_url, $parameters);
+        $response = $this->fetchUrl($this->url(), $this->parameters($url));
 
         // read the shorted url from the response object
         $shorter_url = $this->parse($response);
@@ -84,11 +81,13 @@ class Bitly extends Client implements DriverInterface
     }
 
     /**
+     * Build the request parameters
+     *
      * @param $url
      *
      * @return array
      */
-    protected function buildRequestParameters($url)
+    protected function parameters($url)
     {
         return [
             'access_token' => $this->access_token,
@@ -98,11 +97,11 @@ class Bitly extends Client implements DriverInterface
     }
 
     /**
-     * get the bitly shorten URI
+     * get the bitly shorten URL
      *
      * @return string
      */
-    protected function buildShortenUrl()
+    protected function url()
     {
         return self::API_DOMAIN . self::SHORTEN_ENDPOINTS;
     }

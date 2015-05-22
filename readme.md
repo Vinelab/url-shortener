@@ -80,7 +80,7 @@ And to do so:
 The easiest way is to use it is by the `Shorten` facade.
 ```php
 $long_url = 'http://testing.tst/something/12345/something-else/54321';
-$short_url = Shorten/Shorten::url($long_url); // returns the short version of the long_url as a string 
+$short_url = Shorten\Shorten::url($long_url); // returns the short version of the long_url as a string 
 ```
 
 
@@ -100,3 +100,4 @@ check the `Bitly` driver `Vinelab\UrlShortener\Drivers\Bitly` implementation to 
 ## License
 
 The MIT License (MIT). Please see [License File](https://github.com/Vinelab/url-shortener/blob/master/LICENSE) for more information.
+
