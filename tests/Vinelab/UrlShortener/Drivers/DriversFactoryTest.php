@@ -24,15 +24,22 @@ class DriversFactoryTest extends TestCase {
         parent::tearDown();
     }
 
+    private function driverParameters()
+    {
+        return [
+            'domain' => 'https://api-ssl.bitly.com',
+            'endpoint' => '/v3/shorten',
+            "token" => "1234567890qwertyuiopasdfghjklzxcvbnm",
+        ];
+    }
+
     /**
      * the initializing a bitly driver using the factory
      */
     public function testInitializingBitlyDriver()
     {
         $driverName = 'bitly';
-        $driverParameters = [
-            "token" => "1234567890qwertyuiopasdfghjklzxcvbnm"
-        ];
+        $driverParameters = $this->driverParameters();
 
         $driver = DriversFactory::make($driverName, $driverParameters);
 
@@ -47,9 +54,7 @@ class DriversFactoryTest extends TestCase {
     public function testMissingDriverName()
     {
         $driverName = '';
-        $driverParameters = [
-            "token" => "1234567890qwertyuiopasdfghjklzxcvbnm"
-        ];
+        $driverParameters = $this->driverParameters();
 
         DriversFactory::make($driverName, $driverParameters);
     }
@@ -62,9 +67,7 @@ class DriversFactoryTest extends TestCase {
     public function testNonSupportedDriver()
     {
         $driverName = 'NonSupported';
-        $driverParameters = [
-            "token" => "1234567890qwertyuiopasdfghjklzxcvbnm"
-        ];
+        $driverParameters = $this->driverParameters();
 
         DriversFactory::make($driverName, $driverParameters);
     }
@@ -75,9 +78,7 @@ class DriversFactoryTest extends TestCase {
     public function testInitializingFactoryNormally()
     {
         $driverName = 'bitly';
-        $driverParameters = [
-            "token" => "1234567890qwertyuiopasdfghjklzxcvbnm"
-        ];
+        $driverParameters = $this->driverParameters();
 
         $driver = (new DriversFactory())->make($driverName, $driverParameters);
 

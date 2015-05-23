@@ -18,19 +18,19 @@ class Bitly extends Client implements DriverInterface
     use ValidatorTrait;
 
     /**
-     * the bitly API
+     * the response data format
      */
-    const API_DOMAIN = 'https://api-ssl.bitly.com';
+    const RESPONSE_FORMAT = 'json';
+
+    /**
+     * the bitly API domain
+     */
+    protected $domain;
 
     /**
      * bitly endpoint to shorten URL
      */
-    const SHORTEN_ENDPOINTS = '/v3/shorten';
-
-    /**
-     * the response data format
-     */
-    const RESPONSE_FORMAT = 'json';
+    protected $endpoint;
 
     /**
      * bitly app access token collected from the config file
@@ -59,6 +59,8 @@ class Bitly extends Client implements DriverInterface
      */
     private function setParameters($parameters)
     {
+        $this->domain = $this->validateConfiguration($parameters['domain']);
+        $this->endpoint = $this->validateConfiguration($parameters['endpoint']);
         $this->access_token = $this->validateConfiguration($parameters['token']);
     }
 
@@ -103,7 +105,7 @@ class Bitly extends Client implements DriverInterface
      */
     protected function url()
     {
-        return self::API_DOMAIN . self::SHORTEN_ENDPOINTS;
+        return $this->domain . $this->endpoint;
     }
 
     /**
