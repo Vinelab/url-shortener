@@ -24,7 +24,11 @@ return [
 
         'bitly' => [
 
-            'token' => '5b049304ecb6d7be952caa8655f212d75c8cad92',
+            'domain' => 'https://api-ssl.bitly.com',
+
+            'endpoint' => '/v3/shorten',
+
+            'token' => 'YOUR-TOKEN-HERE',
 
         ],
 

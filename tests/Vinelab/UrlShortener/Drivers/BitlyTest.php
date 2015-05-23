@@ -25,14 +25,22 @@ class BitlyTest extends TestCase {
         parent::tearDown();
     }
 
+    private function driverParameters()
+    {
+        return [
+            'domain' => 'https://api-ssl.bitly.com',
+            'endpoint' => '/v3/shorten',
+            "token" => "1234567890qwertyuiopasdfghjklzxcvbnm",
+        ];
+    }
+
     /**
      * test initializing an object of Bitly
      */
     public function testInitializingBitlyInstance()
     {
-        $parameters = [
-            "token" => "1234567890qwertyuiopasdfghjklzxcvbnm"
-        ];
+
+        $parameters = $this->driverParameters();
 
         $bitly = New Bitly($parameters);
 
