@@ -37,15 +37,23 @@ class Shorten implements ShortenInterface
     protected $driverParameters;
 
     /**
-     * @param \Vinelab\UrlShortener\ConfigManager $config
+     * @var object
      */
-    public function __construct(ConfigManager $config)
+    private $httpClient;
+
+    /**
+     * @param \Vinelab\UrlShortener\ConfigManager $config
+     * @param null $httpClient The http Client 'will be injected here (mocked) for testing'
+     */
+    public function __construct(ConfigManager $config, $httpClient = null)
     {
         $this->driverName = $config->driverName();
         $this->driverParameters = $config->driverParameters($this->driverName);
 
+        $this->httpClient = $httpClient;
+
         // initialize driver instance (based on the configuration input)
-        $this->driver = DriversFactory::make($this->driverName, $this->driverParameters);
+        $this->driver = DriversFactory::make($this->driverName, $this->driverParameters, $this->httpClient);
     }
 
     /**
