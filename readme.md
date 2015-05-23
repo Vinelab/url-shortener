@@ -1,10 +1,17 @@
 # URL Shortener PHP Package
 
-Shorten your URL the easy way, with your favourite provider (Bit.ly, Goo.gl, Ow.ly).
+[![Latest Stable Version](https://poser.pugx.org/vinelab/url-shortener/v/stable)](https://packagist.org/packages/vinelab/url-shortener) 
+[![Latest Unstable Version](https://poser.pugx.org/vinelab/url-shortener/v/unstable)](https://packagist.org/packages/vinelab/url-shortener) 
+[![Total Downloads](https://poser.pugx.org/vinelab/url-shortener/downloads)](https://packagist.org/packages/vinelab/url-shortener) 
+[![Build Status](https://travis-ci.org/Vinelab/url-shortener.svg)](https://travis-ci.org/Vinelab/url-shortener)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Vinelab/url-shortener/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Vinelab/url-shortener/?branch=master)
+[![License](https://poser.pugx.org/vinelab/url-shortener/license)](https://packagist.org/packages/vinelab/url-shortener)
+
+**`vinelab/url-shortener`** is a PHP Package that helps you shorten your URL the easy way, with your favourite URL Shortening provider (Bit.ly, Goo.gl, Ow.ly).
 
 *The URL Shortening Providers are online services that takes long URLs and squeezes them into fewer characters to make the link easier to share, tweet, or send by email.*
 
-`vinelab/url-shortener` is a PHP Package that consumes `URL Shortening Providers` API's.
+
 
 The supported providers of this release:
 * Bit.ly
@@ -31,9 +38,12 @@ B. Or manually add the package to your `composer.json` and run `composer update`
     }
 ```
 
-##### Inside Laravel project:
+#### Inside Frameworks
 
-If you are using this package inside a Laravel project then you need to:
+##### Laravel:
+
+To use this package inside a Laravel project, you need to:
+
 
 1. Register the service provider in your `config/app.php`:
 ```php
@@ -48,20 +58,20 @@ The service provider will automatically alias the `Vinelab\UrlShortener\Shorten`
 ```dos 
 php artisan vendor:publish --provider ='Vinelab\UrlShortener\UrlShortenerServiceProvider'
 ```
-
-Go to the generated config file `url-shortener.php` and select your default provider:
+3. Go to the generated config file `url-shortener.php` and select your default provider:
 ```php
 	'default' => 'bitly',
 ```
+4. Then add your provider token:
 
-Then add your provider token:
 ```php
         'bitly' => [
-
+            'domain' => 'https://api-ssl.bitly.com',
+            'endpoint' => '/v3/shorten',
             'token' => 'YOUR-TOKEN-HERE',
-
         ],
 ```
+
 
 Note: It's very recommended to not add your token (any sensetive data) to the config file instead reference it to a `.env` variable. 
 
@@ -80,21 +90,41 @@ And to do so:
 The easiest way is to use it is by the `Shorten` facade.
 ```php
 $long_url = 'http://testing.tst/something/12345/something-else/54321';
+
 $short_url = Shorten\Shorten::url($long_url); // returns the short version of the long_url as a string 
 ```
 
 
-## Contribution
+
+
+
+
+
+
+
+
+## Contributing
 
 ### Support new provider
 
-Supporting a new URL shortening provider is very easy.
+To add support for a new URL shortening provider:
 
-1. all you have to is to write a driver for your URL Shortener service.
-check the `Bitly` driver `Vinelab\UrlShortener\Drivers\Bitly` implementation to get an overview.
+1. write a driver for your URL Shortener service.
+check the `Bitly` driver `Vinelab\UrlShortener\Drivers\Bitly` class.
 2. add you driver configuration to the config file.
 3. write tests for your drvier.
-4. check out the  [Contribution Guide](https://github.com/Vinelab/url-shortener/blob/master/CONTRIBUTING.md) for general details.
+4. update the `README` file
+5. check out the [Contribution Guide](https://github.com/Vinelab/url-shortener/blob/master/CONTRIBUTING.md) for general details.
+
+
+## Security
+
+If you discover any security related issues, please email mahmoud@vinelab.com instead of using the issue tracker.
+
+## Credits
+
+- [Mahmoud Zalt](https://github.com/Mahmoudz)
+- [All Contributors](../../contributors)
 
 
 ## License
