@@ -41,7 +41,7 @@ class Bitly extends Client implements DriverInterface
 
     /**
      * @param array  $parameters
-     * @param Object $http_client optionally you can override the default http_client used by the extended Client class
+     * @param Object $http_client
      */
     public function __construct($parameters, $http_client = null)
     {

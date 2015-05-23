@@ -29,13 +29,11 @@ class DriversFactory
      *
      * @param $name       driver name to be initialized
      * @param $parameters parameters to be passed to the driver constructor
+     * @param $httpClient
      *
-     * @throws \Vinelab\UrlShortener\Drivers\MissingConfigurationException
-     * @throws \Vinelab\UrlShortener\Drivers\UnsupportedDriverException
-     *
-     * @return Vinelab\UrlShortener\Contracts\DriverInterface
+     * @return \Vinelab\UrlShortener\Drivers\Vinelab\UrlShortener\Contracts\DriverInterface
      */
-    public static function make($name, $parameters)
+    public static function make($name, $parameters, $httpClient = null)
     {
         if (!$name) {
             throw new MissingConfigurationException("The config file is missing the (Default Driver Name)");
@@ -49,7 +47,7 @@ class DriversFactory
         }
 
         // initialize the driver object and pass the parameters to it's constructor
-        $driver_object = new $driver_class($parameters);
+        $driver_object = new $driver_class($parameters, $httpClient);
 
         return $driver_object;
     }

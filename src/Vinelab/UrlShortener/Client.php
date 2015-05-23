@@ -7,7 +7,7 @@ use Vinelab\UrlShortener\Contracts\ClientInterface;
 /**
  * Class Client
  *
- * @category
+ * @category Client
  * @package Vinelab\UrlShortener
  * @author  Mahmoud Zalt <mahmoud@vinelab.com>
  */

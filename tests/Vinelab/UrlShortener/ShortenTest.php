@@ -2,6 +2,7 @@
 namespace Vinelab\UrlShortener\Tests;
 
 use Mockery as M;
+use stdClass;
 use Vinelab\UrlShortener\ConfigManager;
 use Vinelab\UrlShortener\Shorten;
 
@@ -14,10 +15,24 @@ use Vinelab\UrlShortener\Shorten;
  */
 class ShortenTest extends TestCase
 {
+    protected $m_response;
+
+    protected $m_client;
 
     public function setUp()
     {
         parent::setUp();
+
+        // created dummy mocked response
+        $this->m_response = M::mock(new stdClass());
+        $this->m_response->shouldReceive('json')
+            ->andReturn($this->apiJsonResponse());
+
+        // mocking the http client (to prevent real API calls)
+        $this->m_client = M::mock('Vinelab\Http\Client');
+        $this->m_client->shouldReceive('get')
+            ->andReturn($this->m_response);
+
     }
 
     public function tearDown()
@@ -27,29 +42,31 @@ class ShortenTest extends TestCase
     }
 
     /**
-     *
+     * the response object
+     * @return \stdClass
+     */
+    private function apiJsonResponse()
+    {
+        $dataObj = new stdClass();
+        $dataObj->url = 'http://bit.ly/1zIv6l7';
+
+        $obj = new stdClass();
+        $obj->status_code = 200;
+        $obj->status_txt = "OK";
+        $obj->data = $dataObj;
+
+        return $obj;
+    }
+
+    /**
+     * Test shortening a valid URL (while mocking the real API call)
      */
     public function testShorteningValidUrl()
     {
-//        TODO: mock this tests (prevent sending real request to the API)
-
-//{
-//            +"status_code": 200
-//        +"status_txt": "OK"
-//        +"data": {#288
-//            +"long_url": "http://testing.com/v4/content/something/12345/something-else/54321?featured=1&published=1"
-//            +"url": "http://bit.ly/1zIv6l7"
-//            +"hash": "1zIv6l7"
-//            +"global_hash": "1zIv6l8"
-//            +"new_hash": 0
-//  }
-//}
-
+        $url = 'http://testing.com/v4/content/something/12345/something-else/54321?featured=1&published=1';
 
         $config = new ConfigManager();
-        $shortener = new Shorten($config);
-
-        $url = 'http://testing.com/v4/content/something/12345/something-else/54321?featured=1&published=1';
+        $shortener = new Shorten($config, $this->m_client);
 
         $shorted_url = $shortener->url($url);
 
