@@ -3,7 +3,8 @@ namespace Vinelab\UrlShortener\Tests;
 
 use Mockery as M;
 use stdClass;
-use Vinelab\UrlShortener\ConfigManager;
+use Vinelab\UrlShortener\Base\ConfigManager;
+use Vinelab\UrlShortener\Base\PackageManager;
 use Vinelab\UrlShortener\Shorten;
 
 /**
@@ -66,7 +67,10 @@ class ShortenTest extends TestCase
         $url = 'http://testing.com/v4/content/something/12345/something-else/54321?featured=1&published=1';
 
         $config = new ConfigManager();
-        $shortener = new Shorten($config, $this->m_client);
+
+        $manager = new PackageManager($config, $this->m_client);
+
+        $shortener = new Shorten($manager);
 
         $shorted_url = $shortener->url($url);
 

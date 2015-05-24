@@ -1,5 +1,5 @@
 <?php
-namespace Vinelab\UrlShortener;
+namespace Vinelab\UrlShortener\Base;
 
 use Illuminate\Config\Repository;
 use Symfony\Component\Finder\Finder;
@@ -83,7 +83,7 @@ class ConfigManager extends Repository
     private function configurationPath()
     {
         // the config file of the package directory
-        $config_path = __DIR__ . '/config';
+        $config_path = str_replace("/Base", "/Config", __DIR__);
 
         // check if this laravel specific function `config_path()` exist (means this package is used inside
         // a laravel framework). If so then load then try to load the laravel config file if it exist.

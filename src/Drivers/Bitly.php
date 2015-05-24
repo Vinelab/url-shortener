@@ -1,7 +1,7 @@
 <?php
 namespace Vinelab\UrlShortener\Drivers;
 
-use Vinelab\UrlShortener\Client;
+use Vinelab\UrlShortener\Base\DriversAbstract;
 use Vinelab\UrlShortener\Contracts\DriverInterface;
 use Vinelab\UrlShortener\Validators\ValidatorTrait;
 
@@ -12,7 +12,7 @@ use Vinelab\UrlShortener\Validators\ValidatorTrait;
  * @package  Vinelab\UrlShortener
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
-class Bitly extends Client implements DriverInterface
+class Bitly extends DriversAbstract implements DriverInterface
 {
 
     use ValidatorTrait;
@@ -41,12 +41,15 @@ class Bitly extends Client implements DriverInterface
 
     /**
      * @param array  $parameters
-     * @param Object $http_client
+     * @param Object $httpClient
      */
-    public function __construct($parameters, $http_client = null)
+    public function __construct($parameters, $httpClient = null)
     {
         // must call the constructor of the abstracted class (the Client)
-        parent::__construct($http_client);
+        parent::__construct();
+
+        // set the HTTP client
+        $this->setClient($httpClient);
 
         // read the configuration parameters and set them as attributes of this class
         $this->setParameters($parameters);

@@ -2,7 +2,7 @@
 namespace Vinelab\UrlShortener\Tests;
 
 use Mockery as M;
-use Vinelab\UrlShortener\ConfigManager;
+use Vinelab\UrlShortener\Base\ConfigManager;
 
 /**
  * Class ConfigurationManagerTest
