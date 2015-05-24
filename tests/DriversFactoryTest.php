@@ -2,7 +2,7 @@
 namespace Vinelab\UrlShortener\Tests;
 
 use Mockery as M;
-use Vinelab\UrlShortener\Drivers\DriversFactory;
+use Vinelab\UrlShortener\Base\DriversFactory;
 
 /**
  * Class DriversFactoryTest

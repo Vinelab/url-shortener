@@ -1,5 +1,5 @@
 <?php
-namespace Vinelab\UrlShortener;
+namespace Vinelab\UrlShortener\Base;
 
 use Vinelab\Http\Client as HttpClient;
 use Vinelab\UrlShortener\Contracts\ClientInterface;
@@ -7,11 +7,11 @@ use Vinelab\UrlShortener\Contracts\ClientInterface;
 /**
  * Class Client
  *
- * @category Client
+ * @category Client Adapter
  * @package Vinelab\UrlShortener
  * @author  Mahmoud Zalt <mahmoud@vinelab.com>
  */
-class Client implements ClientInterface
+class ClientAdapter implements ClientInterface
 {
 
     /**
@@ -22,9 +22,27 @@ class Client implements ClientInterface
     /**
      * @param null $client
      */
-    public function __construct($client = null)
+    public function setClient($client = null)
     {
-        $this->client = (!$client) ? new HttpClient() : $client;
+        $this->client = ((!$client) ? $this->defaultClient() : $client);
+    }
+
+    /**
+     * @return HttpClient
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * returns an object of the default HTTP client
+     *
+     * @return \Vinelab\Http\Client
+     */
+    private function defaultClient()
+    {
+        return new HttpClient();
     }
 
     /**
@@ -66,5 +84,7 @@ class Client implements ClientInterface
 
         return $url . substr($prams_former, 0, -1);
     }
+
+
 
 }

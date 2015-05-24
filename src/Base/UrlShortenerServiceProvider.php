@@ -1,5 +1,5 @@
 <?php
-namespace Vinelab\UrlShortener;
+namespace Vinelab\UrlShortener\Base;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -89,7 +89,6 @@ class UrlShortenerServiceProvider extends ServiceProvider
      */
     private function facadeBindings()
     {
-
         // Register 'vinelab.shorten' instance container
         $this->app['vinelab.shorten'] = $this->app->share(function ($app) {
             return $app->make('Vinelab\UrlShortener\Shorten');

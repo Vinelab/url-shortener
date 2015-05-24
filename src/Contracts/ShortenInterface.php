@@ -8,7 +8,9 @@ namespace Vinelab\UrlShortener\Contracts;
 interface ShortenInterface
 {
     /**
-     * Responsible of shortening the URL and returning the short version.
+     * Shortening the URL and returning the short version.
+     * Internally the function call the shorten() of the driver.
+     * The driver is initialized in the Handler parent class.
      *
      * @param $url
      */
