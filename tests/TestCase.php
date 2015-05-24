@@ -5,8 +5,7 @@ use Mockery as M;
 use PHPUnit_Framework_TestCase as PHPUnit;
 
 /**
- * Class TestCase is the Parent test class that every test class must
- * extend from.
+ * Class TestCase is the Parent test class that every test class must extend from
  *
  * @category Parent TestCase
  * @package Vinelab\UrlShortener\Tests

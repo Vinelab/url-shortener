@@ -2,7 +2,15 @@
     "name": "vinelab/url-shortener",
     "description": "Shorten your URL the easy way.",
     "license": "MIT",
-    "keywords": ["Shorten", "URL", "bitly", "Laravel", "URL Shortener", "PHP"],
+    "keywords": [
+      "Shorten",
+      "URL",
+      "URL-Shortener",
+      "URL Shortener",
+      "bitly",
+      "Laravel",
+      "PHP"
+    ],
     "authors": [
         {
             "name": "Mahmoud Zalt",
@@ -22,11 +30,21 @@
         "symfony/var-dumper": "~2.6"
     },
     "autoload": {
-        "classmap": [
-            "tests/TestCase.php"
-        ],
-        "psr-0": {
-            "Vinelab\\UrlShortener": "src/"
+        "psr-4": {
+            "Vinelab\\UrlShortener\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vinelab\\UrlShortener\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
         }
     },
     "minimum-stability": "stable"
