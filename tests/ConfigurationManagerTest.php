@@ -51,6 +51,8 @@ class ConfigurationManagerTest extends TestCase {
         $config = New ConfigManager();
 
         $this->assertArrayHasKey('token', $config->driverParameters('bitly'));
+        $this->assertArrayHasKey('domain', $config->driverParameters('bitly'));
+        $this->assertArrayHasKey('endpoint', $config->driverParameters('bitly'));
     }
 
 }
