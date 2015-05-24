@@ -44,7 +44,7 @@ class ConfigManager extends Repository
      */
     public function read($key)
     {
-        return $this->get(SELF::CONFIG_FILE_NAME . '.' . $key);
+        return $this->get(self::CONFIG_FILE_NAME . '.' . $key);
     }
 
     /**
