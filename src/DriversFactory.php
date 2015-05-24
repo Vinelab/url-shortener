@@ -1,5 +1,5 @@
 <?php
-namespace Vinelab\UrlShortener\Drivers;
+namespace Vinelab\UrlShortener;
 
 use Illuminate\Support\Facades\App;
 use Vinelab\UrlShortener\Exceptions\MissingConfigurationException;

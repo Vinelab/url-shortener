@@ -2,7 +2,7 @@
 namespace Vinelab\UrlShortener;
 
 use Vinelab\UrlShortener\Contracts\ShortenInterface;
-use Vinelab\UrlShortener\Drivers\DriversFactory;
+use Vinelab\UrlShortener\DriversFactory;
 
 /**
  * The Manager class of the package and the single entry point to
