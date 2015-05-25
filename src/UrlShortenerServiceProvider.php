@@ -1,5 +1,5 @@
 <?php
-namespace Vinelab\UrlShortener\Base;
+namespace Vinelab\UrlShortener;
 
 use Illuminate\Support\ServiceProvider;
 
