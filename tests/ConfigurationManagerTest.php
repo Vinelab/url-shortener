@@ -1,6 +1,6 @@
 <?php
 
-namespace Vinelab\UrlShortener\tests;
+namespace Vinelab\UrlShortener\Tests;
 
 use Mockery as M;
 use Vinelab\UrlShortener\Base\ConfigManager;
