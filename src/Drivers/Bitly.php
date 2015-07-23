@@ -1,4 +1,5 @@
 <?php
+
 namespace Vinelab\UrlShortener\Drivers;
 
 use Vinelab\UrlShortener\Base\DriversAbstract;
@@ -6,34 +7,33 @@ use Vinelab\UrlShortener\Contracts\DriverInterface;
 use Vinelab\UrlShortener\Validators\ValidatorTrait;
 
 /**
- * Class Bitly the driver of the Bitly URL shortener provider
+ * Class Bitly the driver of the Bitly URL shortener provider.
  *
  * @category Bitly Driver
- * @package  Vinelab\UrlShortener
+ *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
 class Bitly extends DriversAbstract implements DriverInterface
 {
-
     use ValidatorTrait;
 
     /**
-     * the response data format
+     * the response data format.
      */
     const RESPONSE_FORMAT = 'json';
 
     /**
-     * the bitly API domain
+     * the bitly API domain.
      */
     protected $domain;
 
     /**
-     * bitly endpoint to shorten URL
+     * bitly endpoint to shorten URL.
      */
     protected $endpoint;
 
     /**
-     * bitly app access token collected from the config file
+     * bitly app access token collected from the config file.
      *
      * @var string
      */
@@ -56,7 +56,7 @@ class Bitly extends DriversAbstract implements DriverInterface
     }
 
     /**
-     * set the attributes on the class after validating them
+     * set the attributes on the class after validating them.
      *
      * @param $parameters
      */
@@ -86,7 +86,7 @@ class Bitly extends DriversAbstract implements DriverInterface
     }
 
     /**
-     * Build the request parameters
+     * Build the request parameters.
      *
      * @param $url
      *
@@ -96,27 +96,28 @@ class Bitly extends DriversAbstract implements DriverInterface
     {
         return [
             'access_token' => $this->access_token,
-            'format'       => self::RESPONSE_FORMAT,
-            'longUrl'      => urlencode($url),
+            'format' => self::RESPONSE_FORMAT,
+            'longUrl' => urlencode($url),
         ];
     }
 
     /**
-     * get the bitly shorten URL
+     * get the bitly shorten URL.
      *
      * @return string
      */
     protected function url()
     {
-        return $this->domain . $this->endpoint;
+        return $this->domain.$this->endpoint;
     }
 
     /**
-     * get a response object and return the short URL form the result
+     * get a response object and return the short URL form the result.
      *
      * @param $response_object
      *
      * @return mixed
+     *
      * @throws \Vinelab\UrlShortener\Validators\ResponseErrorException
      */
     private function parse($response_object)
@@ -127,5 +128,4 @@ class Bitly extends DriversAbstract implements DriverInterface
         // return only the short generated url
         return $response_object->data->url;
     }
-
 }

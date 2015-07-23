@@ -1,4 +1,5 @@
 <?php
+
 namespace Vinelab\UrlShortener\Base;
 
 /**
@@ -7,12 +8,11 @@ namespace Vinelab\UrlShortener\Base;
  * the common functionality between all the drivers.
  *
  * @category Drivers Abstract
- * @package Vinelab\UrlShortener\Base
+ *
  * @author  Mahmoud Zalt <mahmoud@vinelab.com>
  */
 abstract class DriversAbstract
 {
-
     /**
      * @var Client Adapter
      */
@@ -22,7 +22,6 @@ abstract class DriversAbstract
      * @var HTTP Client instance
      */
     protected $client;
-
 
     public function __construct()
     {
@@ -55,5 +54,4 @@ abstract class DriversAbstract
     {
         return $this->clientAdapter->fetchUrl($url, $parameters);
     }
-
 }

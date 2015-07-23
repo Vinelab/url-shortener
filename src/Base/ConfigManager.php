@@ -1,4 +1,5 @@
 <?php
+
 namespace Vinelab\UrlShortener\Base;
 
 use Illuminate\Config\Repository;
@@ -13,19 +14,18 @@ use Symfony\Component\Finder\Finder;
  * I preferred to keep it as portable as possible.
  *
  * @category Manager Class (of the configuration)
- * @package  Vinelab\UrlShortener\Config
+ *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
 class ConfigManager extends Repository
 {
-
     /**
-     * the config file name of this package
+     * the config file name of this package.
      */
     const CONFIG_FILE_NAME = 'url-shortener';
 
     /**
-     * load the configuration files
+     * load the configuration files.
      */
     public function __construct()
     {
@@ -36,7 +36,7 @@ class ConfigManager extends Repository
 
     /**
      * extend the functionality of the default get() of the Repository
-     * but always prepend the keys with the config file name
+     * but always prepend the keys with the config file name.
      *
      * @param $key
      *
@@ -44,11 +44,11 @@ class ConfigManager extends Repository
      */
     public function read($key)
     {
-        return $this->get(self::CONFIG_FILE_NAME . '.' . $key);
+        return $this->get(self::CONFIG_FILE_NAME.'.'.$key);
     }
 
     /**
-     * helper function to return the driver default name
+     * helper function to return the driver default name.
      *
      * @return mixed
      */
@@ -58,7 +58,7 @@ class ConfigManager extends Repository
     }
 
     /**
-     * helper function to return the parameters of the driver $name
+     * helper function to return the parameters of the driver $name.
      *
      * @param $name
      *
@@ -66,9 +66,8 @@ class ConfigManager extends Repository
      */
     public function driverParameters($name)
     {
-        return $this->read('drivers' . '.' . $name);
+        return $this->read('drivers'.'.'.$name);
     }
-
 
     /**
      * Initialize the paths.
@@ -83,12 +82,12 @@ class ConfigManager extends Repository
     private function configurationPath()
     {
         // the config file of the package directory
-        $config_path = str_replace("/Base", "/Config", __DIR__);
+        $config_path = str_replace('/Base', '/Config', __DIR__);
 
         // check if this laravel specific function `config_path()` exist (means this package is used inside
         // a laravel framework). If so then load then try to load the laravel config file if it exist.
         if (function_exists('config_path')) {
-            $config_file = config_path() . '/' . self::CONFIG_FILE_NAME . '.php';
+            $config_file = config_path().'/'.self::CONFIG_FILE_NAME.'.php';
 
             if (file_exists($config_file)) {
                 // override the path by the laravel specific config directory 
@@ -116,13 +115,13 @@ class ConfigManager extends Repository
             $envConfig = require $path;
 
             foreach ($envConfig as $envKey => $value) {
-                $this->set($fileKey . '.' . $envKey, $value);
+                $this->set($fileKey.'.'.$envKey, $value);
             }
         }
     }
 
     /**
-     * Get the configuration files for the selected environment
+     * Get the configuration files for the selected environment.
      *
      * @return array
      */
@@ -143,5 +142,4 @@ class ConfigManager extends Repository
 
         return $files;
     }
-
 }

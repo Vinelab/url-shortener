@@ -1,18 +1,19 @@
 <?php
-namespace Vinelab\UrlShortener\Tests;
+
+namespace Vinelab\UrlShortener\tests;
 
 use Mockery as M;
 use Vinelab\UrlShortener\Base\ConfigManager;
 
 /**
- * Class ConfigurationManagerTest
+ * Class ConfigurationManagerTest.
  *
  * @category Test Class
- * @package Vinelab\UrlShortener\Tests
+ *
  * @author  Mahmoud Zalt <mahmoud@vinelab.com>
  */
-class ConfigurationManagerTest extends TestCase {
-
+class ConfigurationManagerTest extends TestCase
+{
     public function setUp()
     {
         parent::setUp();
@@ -25,34 +26,33 @@ class ConfigurationManagerTest extends TestCase {
     }
 
     /**
-     * the getting driver name
+     * the getting driver name.
      */
     public function testReadingFromConfigFile()
     {
-        $config = New ConfigManager();
+        $config = new ConfigManager();
 
         $this->assertEquals($config->read('default'), 'bitly');
     }
 
     /**
-     * the getting driver name
+     * the getting driver name.
      */
     public function testGettingDriverName()
     {
-        $config = New ConfigManager();
+        $config = new ConfigManager();
 
         $this->assertEquals($config->driverName(), 'bitly');
     }
     /**
-     * the getting driver name
+     * the getting driver name.
      */
     public function testGettingDriverParameters()
     {
-        $config = New ConfigManager();
+        $config = new ConfigManager();
 
         $this->assertArrayHasKey('token', $config->driverParameters('bitly'));
         $this->assertArrayHasKey('domain', $config->driverParameters('bitly'));
         $this->assertArrayHasKey('endpoint', $config->driverParameters('bitly'));
     }
-
 }

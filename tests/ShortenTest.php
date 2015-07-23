@@ -1,5 +1,6 @@
 <?php
-namespace Vinelab\UrlShortener\Tests;
+
+namespace Vinelab\UrlShortener\tests;
 
 use Mockery as M;
 use stdClass;
@@ -8,10 +9,10 @@ use Vinelab\UrlShortener\Base\PackageManager;
 use Vinelab\UrlShortener\Shorten;
 
 /**
- * Class ShortenTest
+ * Class ShortenTest.
  *
  * @category Test Class
- * @package  Vinelab\UrlShortener\Tests
+ *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
 class ShortenTest extends TestCase
@@ -33,7 +34,6 @@ class ShortenTest extends TestCase
         $this->m_client = M::mock('Vinelab\Http\Client');
         $this->m_client->shouldReceive('get')
             ->andReturn($this->m_response);
-
     }
 
     public function tearDown()
@@ -43,7 +43,8 @@ class ShortenTest extends TestCase
     }
 
     /**
-     * the response object
+     * the response object.
+     *
      * @return \stdClass
      */
     private function apiJsonResponse()
@@ -53,14 +54,14 @@ class ShortenTest extends TestCase
 
         $obj = new stdClass();
         $obj->status_code = 200;
-        $obj->status_txt = "OK";
+        $obj->status_txt = 'OK';
         $obj->data = $dataObj;
 
         return $obj;
     }
 
     /**
-     * Test shortening a valid URL (while mocking the real API call)
+     * Test shortening a valid URL (while mocking the real API call).
      */
     public function testShorteningValidUrl()
     {
@@ -76,5 +77,4 @@ class ShortenTest extends TestCase
 
         $this->assertEquals($shorted_url, 'http://bit.ly/1zIv6l7');
     }
-
 }

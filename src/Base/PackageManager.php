@@ -1,4 +1,5 @@
 <?php
+
 namespace Vinelab\UrlShortener\Base;
 
 /**
@@ -6,28 +7,27 @@ namespace Vinelab\UrlShortener\Base;
  * It' main job is to initialize the config file.
  *
  * @category Manager
- * @package  Vinelab\UrlShortener\Base
+ *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
 class PackageManager
 {
-
     /**
-     * default driver name
+     * default driver name.
      *
      * @var string
      */
     protected $driverName;
 
     /**
-     * configurations of the default driver
+     * configurations of the default driver.
      *
      * @var array
      */
     protected $driverParameters;
 
     /**
-     * Http client
+     * Http client.
      *
      * @var object
      */
@@ -91,5 +91,4 @@ class PackageManager
     {
         $this->httpClient = $httpClient;
     }
-
 }

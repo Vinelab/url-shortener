@@ -1,4 +1,5 @@
 <?php
+
 namespace Vinelab\UrlShortener\Base;
 
 /**
@@ -6,14 +7,13 @@ namespace Vinelab\UrlShortener\Base;
  * Every API (accessible by users) must extend from this Handler.
  *
  * @category API Abstract
- * @package  Vinelab\UrlShortener\Base
+ *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
 abstract class Handler
 {
-
     /**
-     * Instance of the default driver
+     * Instance of the default driver.
      *
      * @var \Vinelab\UrlShortener\Contracts\DriverInterface
      */
@@ -49,5 +49,4 @@ abstract class Handler
     {
         $this->driver = $driver;
     }
-
 }

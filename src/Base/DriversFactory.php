@@ -1,4 +1,5 @@
 <?php
+
 namespace Vinelab\UrlShortener\Base;
 
 use Vinelab\UrlShortener\Exceptions\MissingConfigurationException;
@@ -12,19 +13,18 @@ use Vinelab\UrlShortener\Exceptions\UnsupportedDriverException;
  * normal example: $driver = (new DriversFactory())->make($driverName, $driverParameters);
  *
  * @category Factory Class (for Drivers)
- * @package  Vinelab\Cdn
+ *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
 class DriversFactory
 {
-
     /**
-     * the namespace of the drivers
+     * the namespace of the drivers.
      */
-    const DRIVERS_NAMESPACE = "Vinelab\\UrlShortener\\Drivers\\";
+    const DRIVERS_NAMESPACE = 'Vinelab\\UrlShortener\\Drivers\\';
 
     /**
-     * initialize the driver instance and return it
+     * initialize the driver instance and return it.
      *
      * @param $name       driver name to be initialized
      * @param $parameters parameters to be passed to the driver constructor
@@ -35,11 +35,11 @@ class DriversFactory
     public static function make($name, $parameters, $httpClient = null)
     {
         if (!$name) {
-            throw new MissingConfigurationException("The config file is missing the (Default Driver Name)");
+            throw new MissingConfigurationException('The config file is missing the (Default Driver Name)');
         }
 
         // prepare the full driver class name
-        $driver_class = self::DRIVERS_NAMESPACE . ucwords($name);
+        $driver_class = self::DRIVERS_NAMESPACE.ucwords($name);
 
         if (!class_exists($driver_class)) {
             throw new UnsupportedDriverException("The driver ($name) is not supported.");
@@ -50,5 +50,4 @@ class DriversFactory
 
         return $driver_object;
     }
-
 }

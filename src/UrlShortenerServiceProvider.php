@@ -1,18 +1,18 @@
 <?php
+
 namespace Vinelab\UrlShortener;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Class UrlShortenerServiceProvider
+ * Class UrlShortenerServiceProvider.
  *
  * @category The package service provider
- * @package  Vinelab\UrlShortener
+ *
  * @author   Mahmoud Zalt <mahmoud@vinelab.com>
  */
 class UrlShortenerServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -33,11 +33,8 @@ class UrlShortenerServiceProvider extends ServiceProvider
         $this->configPublisher();
     }
 
-
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
@@ -74,18 +71,18 @@ class UrlShortenerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Publish the Config file from the Package to the App directory
+     * Publish the Config file from the Package to the App directory.
      */
     private function configPublisher()
     {
         // When users execute Laravel's vendor:publish command, the config file will be copied to the specified location
         $this->publishes([
-            __DIR__ . '/Config/url-shortener.php' => config_path('url-shortener.php'),
+            __DIR__.'/Config/url-shortener.php' => config_path('url-shortener.php'),
         ]);
     }
 
     /**
-     * Facades Binding
+     * Facades Binding.
      */
     private function facadeBindings()
     {
@@ -102,7 +99,7 @@ class UrlShortenerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Implementation Bindings
+     * Implementation Bindings.
      */
     private function implementationBindings()
     {
@@ -113,11 +110,10 @@ class UrlShortenerServiceProvider extends ServiceProvider
     }
 
     /**
-     * Registering Other Custom Service Providers
+     * Registering Other Custom Service Providers.
      */
     private function serviceProviders()
     {
-//        $this->app->register('Vinelab\...\...');
+        //        $this->app->register('Vinelab\...\...');
     }
-
 }

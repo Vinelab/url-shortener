@@ -1,18 +1,19 @@
 <?php
-namespace Vinelab\UrlShortener\Tests;
+
+namespace Vinelab\UrlShortener\tests;
 
 use Mockery as M;
 use Vinelab\UrlShortener\Base\DriversFactory;
 
 /**
- * Class DriversFactoryTest
+ * Class DriversFactoryTest.
  *
  * @category Test Class
- * @package Vinelab\UrlShortener\Tests
+ *
  * @author  Mahmoud Zalt <mahmoud@vinelab.com>
  */
-class DriversFactoryTest extends TestCase {
-
+class DriversFactoryTest extends TestCase
+{
     public function setUp()
     {
         parent::setUp();
@@ -29,12 +30,12 @@ class DriversFactoryTest extends TestCase {
         return [
             'domain' => 'https://api-ssl.bitly.com',
             'endpoint' => '/v3/shorten',
-            "token" => "1234567890qwertyuiopasdfghjklzxcvbnm",
+            'token' => '1234567890qwertyuiopasdfghjklzxcvbnm',
         ];
     }
 
     /**
-     * the initializing a bitly driver using the factory
+     * the initializing a bitly driver using the factory.
      */
     public function testInitializingBitlyDriver()
     {
@@ -47,7 +48,7 @@ class DriversFactoryTest extends TestCase {
     }
 
     /**
-     * the initializing a NULL driver
+     * the initializing a NULL driver.
      *
      * @expectedException Vinelab\UrlShortener\Exceptions\MissingConfigurationException
      */
@@ -60,7 +61,7 @@ class DriversFactoryTest extends TestCase {
     }
 
     /**
-     * the initializing a non supported driver
+     * the initializing a non supported driver.
      *
      * @expectedException Vinelab\UrlShortener\Exceptions\UnsupportedDriverException
      */
@@ -73,7 +74,7 @@ class DriversFactoryTest extends TestCase {
     }
 
     /**
-     * test initializing an object of the factory normally
+     * test initializing an object of the factory normally.
      */
     public function testInitializingFactoryNormally()
     {
@@ -84,5 +85,4 @@ class DriversFactoryTest extends TestCase {
 
         $this->assertInstanceOf('Vinelab\UrlShortener\Drivers\Bitly', $driver);
     }
-
 }

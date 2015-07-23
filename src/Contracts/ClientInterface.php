@@ -1,9 +1,9 @@
 <?php
+
 namespace Vinelab\UrlShortener\Contracts;
 
 /**
- * Interface ClientInterface
- * @package Vinelab\UrlShortener\Contracts
+ * Interface ClientInterface.
  */
 interface ClientInterface
 {
