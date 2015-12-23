@@ -1,8 +1,8 @@
 # URL Shortener PHP Package
 
-[![Latest Stable Version](https://poser.pugx.org/vinelab/url-shortener/v/stable)](https://packagist.org/packages/vinelab/url-shortener) 
-[![Latest Unstable Version](https://poser.pugx.org/vinelab/url-shortener/v/unstable)](https://packagist.org/packages/vinelab/url-shortener) 
-[![Total Downloads](https://poser.pugx.org/vinelab/url-shortener/downloads)](https://packagist.org/packages/vinelab/url-shortener) 
+[![Latest Stable Version](https://poser.pugx.org/vinelab/url-shortener/v/stable)](https://packagist.org/packages/vinelab/url-shortener)
+[![Latest Unstable Version](https://poser.pugx.org/vinelab/url-shortener/v/unstable)](https://packagist.org/packages/vinelab/url-shortener)
+[![Total Downloads](https://poser.pugx.org/vinelab/url-shortener/downloads)](https://packagist.org/packages/vinelab/url-shortener)
 [![Build Status](https://travis-ci.org/Vinelab/url-shortener.svg)](https://travis-ci.org/Vinelab/url-shortener)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Vinelab/url-shortener/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Vinelab/url-shortener/?branch=master)
 [![License](https://poser.pugx.org/vinelab/url-shortener/license)](https://packagist.org/packages/vinelab/url-shortener)
@@ -27,7 +27,7 @@ The recommended way to install this package is via `Composer`.
 
 A. Run this composer command:
 
-```bash 
+```bash
 	composer require vinelab/url-shortener:*
 ```
 
@@ -64,7 +64,7 @@ The service provider will automatically alias the `Vinelab\UrlShortener\Shorten`
 
 .2. Publish the configuration file:
 
-```bash 
+```bash
 php artisan vendor:publish --provider ='Vinelab\UrlShortener\UrlShortenerServiceProvider'
 ```
 
@@ -86,20 +86,20 @@ php artisan vendor:publish --provider ='Vinelab\UrlShortener\UrlShortenerService
 ```
 
 
-Note: It's very recommended to not add your token (any sensetive data) to the config file instead reference it to a `.env` variable. 
+Note: It's very recommended to not add your token (any sensetive data) to the config file instead reference it to a `.env` variable.
 
 And to do so:
 
 1. replace the `'token' => 'YOUR-TOKEN-HERE',` with `'token' => env('BITLY_TOKEN'),`
 
 
-2. open your `.env` file and add the token variable there with the token value: `BITLY_TOKEN=YOUR-TOKEN-HERE`. 
+2. open your `.env` file and add the token variable there with the token value: `BITLY_TOKEN=YOUR-TOKEN-HERE`.
 
 
 3. add the variable `BITLY_TOKEN=` to the `.env.example` for other developers.
 
 
- 
+
 ## Usage
 
 ##### With Laravel:
@@ -109,7 +109,7 @@ The easiest way is to use it is by the `Shorten` facade.
 ```php
 $long_url = 'http://testing.tst/something/12345/something-else/54321';
 
-$short_url = Shorten\Shorten::url($long_url); // returns the short version of the long_url as a string 
+$short_url = Shorten\Shorten::url($long_url); // returns the short version of the long_url as a string
 ```
 
 
@@ -144,13 +144,13 @@ check the `Bitly` driver `Vinelab\UrlShortener\Drivers\Bitly` class.
 [On Github](https://github.com/Vinelab/url-shortener/issues)
 
 
-
 ## Security
 
-If you discover any security related issues, please email mahmoud@vinelab.com instead of using the issue tracker.
+If you discover any security related issues, please email abed.halawi@vinelab.com instead of using the issue tracker.
 
 ## Credits
 
+- [Abed Halawi](https://github.com/Mulkave)
 - [Mahmoud Zalt](https://github.com/Mahmoudz)
 - [All Contributors](../../contributors)
 

@@ -9,13 +9,15 @@
       "URL Shortener",
       "bitly",
       "Bit.ly",
-      "Owly",
-      "Ow.ly",
-      "Googl",
-      "Goo.gl",
       "Laravel"
     ],
     "authors": [
+        {
+            "name": "Abed Halawi",
+            "email": "abed.halawi@vinelab.com",
+            "homepage": "http://about.me/abedhalawi",
+            "role": "Tech Lead"
+        },
         {
             "name": "Mahmoud Zalt",
             "email": "inbox@mahmoudzalt.com",
@@ -25,9 +27,9 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "5.0.*",
-        "illuminate/config": "~5.0",
-        "symfony/finder": "~2.6",
+        "illuminate/support": "5.*",
+        "illuminate/config": "5.*",
+        "symfony/finder": "~2.7",
         "Vinelab/http": "1.2.*"
     },
     "require-dev": {
