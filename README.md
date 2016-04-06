@@ -65,7 +65,7 @@ The service provider will automatically alias the `Vinelab\UrlShortener\Shorten`
 .2. Publish the configuration file:
 
 ```bash
-php artisan vendor:publish --provider ='Vinelab\UrlShortener\UrlShortenerServiceProvider'
+php artisan vendor:publish --provider='Vinelab\UrlShortener\UrlShortenerServiceProvider'
 ```
 
 ## Configuration
@@ -98,7 +98,11 @@ And to do so:
 
 3. add the variable `BITLY_TOKEN=` to the `.env.example` for other developers.
 
+## Generating Bitly `access_token`:
 
+According to the [Bitly API documentation](http://dev.bitly.com/authentication.html), a generic access token can be created by using [this link](https://bitly.com/a/oauth_apps).
+
+You should be asked to enter your Bitly account password, and if successful you should be presented with your generic access token.
 
 ## Usage
 
