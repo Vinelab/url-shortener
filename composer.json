@@ -26,10 +26,10 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5",
         "illuminate/support": "5.*",
         "illuminate/config": "5.*",
-        "symfony/finder": "~2.7",
+        "symfony/finder": "3.0.7",
         "Vinelab/http": "1.2.*"
     },
     "require-dev": {
