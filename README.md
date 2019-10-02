@@ -7,7 +7,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Vinelab/url-shortener/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Vinelab/url-shortener/?branch=master)
 [![License](https://poser.pugx.org/vinelab/url-shortener/license)](https://packagist.org/packages/vinelab/url-shortener)
 
-**`vinelab/url-shortener`** is a PHP framework agnostic Package that makes it easy to shorten your URL's, with your favourite URL Shortening provider such as (Bit.ly, Goo.gl, Ow.ly).
+**`vinelab/url-shortener`** is a PHP framework agnostic Package that makes it easy to shorten your URL's, with your favourite URL Shortening provider such as (Bit.ly, Ow.ly).
 
 *The URL Shortening Providers are online services that takes long URLs and squeezes them into fewer characters to make the link easier to share, tweet, or send by email.*
 
