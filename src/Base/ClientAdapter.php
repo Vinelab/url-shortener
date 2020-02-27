@@ -59,9 +59,35 @@ class ClientAdapter implements ClientInterface
      */
     public function fetchUrl($url, $parameters = [], $json_formatted = true, $verb = 'get')
     {
-        $full_url = $this->buildUrl($url, $parameters);
+        if ($verb == 'post') {
+            $data = json_encode(['long_url' => urldecode($parameters['longUrl'])]);
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $url,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS =>$data,
+                CURLOPT_HTTPHEADER => array(
+                    "Content-Type: application/json",
+                    "Authorization: Bearer ".$parameters['access_token']
+                ),
+            ));
 
-        $response = $this->client->{$verb}($full_url);
+            $response = curl_exec($curl);
+            $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+            $response=json_decode($response);
+            $response->status_code = $httpcode;
+            $json_formatted = false;
+        }else{
+            $full_url = $this->buildUrl($url, $parameters);
+            $response = $this->client->{$verb}($full_url);
+        }
 
         return ($json_formatted) ? $response->json() : $response;
     }
