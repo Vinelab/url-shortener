@@ -78,8 +78,7 @@ class Bitly extends DriversAbstract implements DriverInterface
     {
         // make the API call through the extended client
         $verb = 'get';
-        if ($this->domain =='https://api-ssl.bitly.com' && $this->endpoint='/v4/shorten')
-        {
+        if ($this->domain == 'https://api-ssl.bitly.com' && $this->endpoint == '/v4/shorten') {
             $verb = 'post';
         }
         $response = $this->fetchUrl($this->url(), $this->parameters($url));
