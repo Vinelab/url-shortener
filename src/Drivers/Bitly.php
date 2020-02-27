@@ -77,6 +77,11 @@ class Bitly extends DriversAbstract implements DriverInterface
     public function shorten($url)
     {
         // make the API call through the extended client
+        $verb = 'get';
+        if ($this->domain =='https://api-ssl.bitly.com' && $this->endpoint='/v4/shorten')
+        {
+            $verb = 'post';
+        }
         $response = $this->fetchUrl($this->url(), $this->parameters($url));
 
         // read the shorted url from the response object
@@ -126,6 +131,10 @@ class Bitly extends DriversAbstract implements DriverInterface
         $this->validateResponseCode($response_object->status_code);
 
         // return only the short generated url
-        return $response_object->data->url;
+        if (isset($response_object->data)) {
+            return $response_object->data->url;
+        }else{
+            return $response_object->link;
+        }
     }
 }

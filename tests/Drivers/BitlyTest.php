@@ -31,6 +31,7 @@ class BitlyTest extends TestCase
         return [
             'domain' => 'https://api-ssl.bitly.com',
             'endpoint' => '/v3/shorten',
+            //'endpoint' => '/v4/shorten',
             'token' => '1234567890qwertyuiopasdfghjklzxcvbnm',
         ];
     }
