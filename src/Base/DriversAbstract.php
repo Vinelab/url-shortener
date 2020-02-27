@@ -50,8 +50,8 @@ abstract class DriversAbstract
      *
      * @return mixed
      */
-    public function fetchUrl($url, $parameters)
+    public function fetchUrl($url, $parameters, $json_formatted = true, $verb = 'get')
     {
-        return $this->clientAdapter->fetchUrl($url, $parameters);
+        return $this->clientAdapter->fetchUrl($url, $parameters, $json_formatted, $verb);
     }
 }
